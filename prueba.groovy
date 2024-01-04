@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Ejecutar el script para crear la base de datos
-                    bat "sqlcmd -S ${DB_SERVER} -U ${DB_USER} -P ${DB_PASSWORD} -d master -i ${CREATE_DB_SCRIPT}"
+                    bat "sqlcmd -S ${DB_SERVER} -U ${DB_USER} -P ${DB_PASSWORD} -d master -f 65001 -i ${CREATE_DB_SCRIPT}"
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     // Ejecutar el script para crear la tabla
-                    bat "sqlcmd -S ${DB_SERVER} -U ${DB_USER} -P ${DB_PASSWORD} -d ${DB_NAME} -i ${CREATE_TABLE_SCRIPT}"
+                    bat "sqlcmd -S ${DB_SERVER} -U ${DB_USER} -P ${DB_PASSWORD} -d ${DB_NAME} -f 65001 -i ${CREATE_TABLE_SCRIPT}"
                 }
             }
         }
@@ -38,7 +38,7 @@ pipeline {
             steps {
                 script {
                     // Ejecutar el script para insertar datos
-                    bat "sqlcmd -S ${DB_SERVER} -U ${DB_USER} -P ${DB_PASSWORD} -d ${DB_NAME} -i ${INSERT_DATA_SCRIPT}"
+                    bat "sqlcmd -S ${DB_SERVER} -U ${DB_USER} -P ${DB_PASSWORD} -d ${DB_NAME} -f 65001 -i ${INSERT_DATA_SCRIPT}"
                 }
             }
         }
