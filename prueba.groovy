@@ -4,7 +4,7 @@ pipeline {
     // Definir variables de entorno para la conexión a la base de datos y nombres de archivos SQL
     environment {
         DB_SERVER = 'Gadalos'
-        DB_USER = 'su'
+        DB_USER = 'sa'
         DB_PASSWORD = '982365'
         DB_NAME = 'Colegio'
         CREATE_DB_SCRIPT = 'crear_bd.sql'
