@@ -10,6 +10,7 @@ pipeline {
         CREATE_DB_SCRIPT = 'crear_bd.sql'
         CREATE_TABLE_SCRIPT = 'crear_tabla.sql'
         INSERT_DATA_SCRIPT = 'insertar_datos.sql'
+        DELETE_DATA_SCRIPT = 'eliminar_datos.sql'
     }
 
     stages {
@@ -33,7 +34,17 @@ pipeline {
             }
         }
 
-        // Etapa 3: Insertar datos en la base de datos
+        // Etapa 3: Eliminar todos los datos de la tabla
+        stage('Delete Data') {
+            steps {
+                script {
+                    // Ejecutar el script para eliminar todos los datos
+                    bat "sqlcmd -S ${DB_SERVER} -U ${DB_USER} -P ${DB_PASSWORD} -d ${DB_NAME} -f 65001 -i ${DELETE_DATA_SCRIPT}"
+                }
+            }
+        }
+
+        // Etapa 4: Insertar datos en la base de datos
         stage('Insert Data') {
             steps {
                 script {
