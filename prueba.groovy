@@ -15,6 +15,16 @@ pipeline {
     }
 
     stages {
+        
+        // Establecer la codificación de caracteres al inicio
+        stage('Set Encoding') {
+            steps {
+                script {
+                    bat 'chcp 65001'  // Cambia la codificación a UTF-8
+                }
+            }
+        }
+
         // Etapa 1: Crear la base de datos
         stage('Create Database') {
             steps {
