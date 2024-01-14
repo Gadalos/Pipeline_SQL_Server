@@ -15,7 +15,6 @@ pipeline {
     }
 
     stages {
-        
         // Establecer la codificación de caracteres al inicio
         stage('Set Encoding') {
             steps {
